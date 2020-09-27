@@ -112,8 +112,9 @@ if (message.content === prefix + `server`) {
 	message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}\nOnline members: ${totalAllOnline}\nReal Members: ${RealMembers}\nBots: ${message.guild.members.cache.filter(member => member.user.bot).size}`);
 	console.log(`${message.author.username} used !server`);
 }
-if (message.channel.id === `757268102193873027`) {
-
+if (message.channel.id === `757268102193873027` && message.author.id === '545292962821570560') return;
+if (message.channel.id === `757268102193873027` && message.author.id != '545292962821570560') {
+	message.delete(1000);
 }
 	if (!client.commands.has(command)) return;
 
