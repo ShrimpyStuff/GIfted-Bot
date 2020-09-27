@@ -86,6 +86,10 @@ if (message.content === prefix + `ShrimpyStuff`){
   message.channel.send(`https://shrimpystuff.github.io/Home/`);
 		console.log(`${message.author.username} used !ShrimpyStuff`);
 }
+if (message.channel.id === `757268102193873027` && message.author.id === '545292962821570560') return;
+if (message.channel.id === `757268102193873027` && message.author.id != '545292962821570560') {
+	message.delete();
+}
 if (message.content === prefix + `Github`|| message.content === prefix + `code` ){
   message.channel.send(`https://github.com/ShrimpyStuff/Gifted-Bot/`);
 		console.log(`${message.author.username} used !Github or !code`);
@@ -111,10 +115,6 @@ if (message.content === prefix + `server`) {
 	const RealMembers = message.guild.members.cache.filter(member => !member.user.bot).size;
 	message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}\nOnline members: ${totalAllOnline}\nReal Members: ${RealMembers}\nBots: ${message.guild.members.cache.filter(member => member.user.bot).size}`);
 	console.log(`${message.author.username} used !server`);
-}
-if (message.channel.id === `757268102193873027` && message.author.id === '545292962821570560') return;
-if (message.channel.id === `757268102193873027` && message.author.id != '545292962821570560') {
-	message.delete({ timeout: 10000 });
 }
 	if (!client.commands.has(command)) return;
 
