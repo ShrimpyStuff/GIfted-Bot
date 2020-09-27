@@ -114,7 +114,7 @@ if (message.content === prefix + `server`) {
 }
 if (message.channel.id === `757268102193873027` && message.author.id === '545292962821570560') return;
 if (message.channel.id === `757268102193873027` && message.author.id != '545292962821570560') {
-	message.delete(1000);
+	message.delete({ timeout: 10000 });
 }
 	if (!client.commands.has(command)) return;
 
