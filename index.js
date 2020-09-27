@@ -116,7 +116,7 @@ client.on("message", message => {
 					console.log(`${message.author.username} used !server`);
 				}
 				if (!client.commands.has(command)) return;
-
+});
 				try {
 					client.commands.get(command).execute(message, args);
 				} catch (error) {
