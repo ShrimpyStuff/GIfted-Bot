@@ -138,4 +138,4 @@ client.on("message", message => {
 					.then(() => client.login(token))
 					.then(msg => channel.send('Done'));
 			}
-			client.login(token)
+			client.login(token);
