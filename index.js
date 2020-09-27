@@ -86,7 +86,6 @@ if (message.content === prefix + `ShrimpyStuff`){
   message.channel.send(`https://shrimpystuff.github.io/Home/`);
 		console.log(`${message.author.username} used !ShrimpyStuff`);
 }
-if (message.channel.id === `757268102193873027` && message.author.id === '545292962821570560') return;
 if (message.channel.id === `757268102193873027` && message.author.id != '545292962821570560') {
 	message.delete();
 }
