@@ -10,6 +10,6 @@ module.exports = {
         const RealMembers = message.guild.members.cache.filter(member => !member.user.bot).size;
         message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}\nOnline members: ${totalAllOnline}\nReal Members: ${RealMembers}\nBots: ${message.guild.members.cache.filter(member => member.user.bot).size}`);
         console.log(`${message.author.username} used !server`);
-      }
+      });
 	},
 };
