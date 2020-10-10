@@ -29,36 +29,8 @@ client.on("message", message => {
 			if (message.content === "16") {
 				message.channel.send("16 is the best number!!! and you can't do anything to change that.");
 			}
-			if (message.content === prefix + "wizards") {
-				message.channel.send('<a:Wizard:737758521776537712> <a:Wizard:737758521776537712>');
-				console.log(`${message.author.username} used !wizards`);
-			}
-			if (message.content === prefix + "wumpus") {
-				message.channel.send('<:wumpus:737758356210712646>');
-				console.log(`${message.author.username} used !wumpus`);
-			}
-			if (message.content === prefix + "emojis") {
-				message.channel.send('<:wumpus:737758356210712646> <a:Wizard:737758521776537712> <:customshrimp:737760014244249738>');
-				console.log(`${message.author.username} used !emojis`);
-			}
-			if (message.content === prefix + `stats`) {
-				message.channel.send(`Servers: ${message.client.guilds.cache.size}`);
-				console.log(`${message.author.username} used !stats`);
-			}
-			if (message.content === prefix + `WWWWDOTCOMI`) {
-				message.channel.send(`https://tinyurl.com/WWWWDOTCOM1`);
-				console.log(`${message.author.username} used !WWWWDOTCOMI`);
-			}
-			if (message.content === prefix + `ShrimpyStuff`) {
-				message.channel.send(`https://shrimpystuff.github.io/Home/`);
-				console.log(`${message.author.username} used !ShrimpyStuff`);
-			}
 			if (message.channel.id === `757268102193873027` && message.author.id != '545292962821570560') {
 				message.delete();
-			}
-			if (message.content === prefix + `Github` || message.content === prefix + `code`) {
-				message.channel.send(`https://github.com/ShrimpyStuff/Gifted-Bot/`);
-				console.log(`${message.author.username} used !Github or !code`);
 			}
 			if (message.mentions.has(client.user)) {
 				return message.channel.send('Hi ${message.author.username}! `My prefix is !`');

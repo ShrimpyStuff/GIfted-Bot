@@ -11,21 +11,28 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-client.once('ready', () => {
-  console.log(`Logged in as ${client.user.tag} and I'm ready to roll!`);
-client.user.setActivity('you and (๑• .̫ •๑)', { type: 'WATCHING' });
+fs.readdir("./events/", (err, files) => {
+	files.forEach(file => {
+		const eventHandler = require(`./events/${file}`);
+		const eventName = file.split(".")[0];
+		client.on(eventName, (...args) => eventHandler(client, ...args));
+	});
 });
 
 client.on('message', message => {
 
   const args = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
+	const commandName = args.shift().toLowerCase();
 
+	if (message.content === "16") {
+		message.channel.send("16 is the best number!!! and you can't do anything to change that.");
+	}
 
-if (!client.commands.has(command)) return;
+if (!client.commands.has(commandName)) return;
+const command = client.commands.get(commandName);
 
 try {
-	client.commands.get(command).execute(message, args);
+	command.execute(message, args);
 } catch (error) {
 	console.error(error);
 	message.reply('there was an error trying to execute that command!');

@@ -2,6 +2,7 @@ module.exports = {
 	name: 'server',
 	description: 'Server info',
 	execute(message, args) {
+			if (!message.content.startsWith('!')) return;
     message.guild.members.fetch().then(fetchedMembers => {
         const totalOnline = fetchedMembers.filter(member => member.presence.status === 'online');
         const totalIdle = fetchedMembers.filter(member => member.presence.status === 'idle');
