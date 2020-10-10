@@ -1,4 +1,4 @@
-/*module.exports = {
+module.exports = {
 	name: 'server',
 	description: 'Server info',
 	execute(message, args) {
@@ -13,4 +13,3 @@
       });
 	},
 };
-*/

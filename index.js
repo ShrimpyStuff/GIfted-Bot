@@ -26,41 +26,8 @@ client.on("message", message => {
 			const args = message.content.slice(prefix.length).trim().split(/ +/);
 			const command = args.shift().toLowerCase();
 
-			if (message.content === prefix + "ping") {
-				message.reply(`Pong! Your ping is ${Date.now() - message.createdTimestamp} ms`);
-				console.log(`${message.author.username} used !ping`);
-			}
-			if (message.content === prefix + "invite") {
-				message.channel.send('Invite me at https://shrimpystuff.github.io/Gifted-Site/');
-				console.log(`${message.author.username} used !Invite`);
-			}
-			if (message.member.hasPermission('MANAGE_MESSAGES')) {
-				if (command === 'purge') {
-					const amount = parseInt(args[0]) + 1;
-
-					if (isNaN(amount)) {
-						return message.reply('that doesn\'t seem to be a valid number.');
-					}
-
-					if (isNaN(amount)) {
-						return message.reply('that doesn\'t seem to be a valid number.');
-					} else if (amount <= 1 || amount > 100) {
-						return message.reply('you need to input a number between 1 and 99.');
-					}
-					message.channel.bulkDelete(amount, true).catch(err => {
-						console.error(err);
-						message.channel.send('there was an error trying to purge messages in this channel!');
-					});
-					console.log(`${message.author.username} used !purge`);
-				}
-			}
 			if (message.content === "16") {
 				message.channel.send("16 is the best number!!! and you can't do anything to change that.");
-				console.log(`${message.author.username} used !16`);
-			}
-			if (message.content === prefix + "shrimp") {
-				message.channel.send('<:customshrimp:737760014244249738>');
-				console.log(`${message.author.username} used !shrimp`);
 			}
 			if (message.content === prefix + "wizards") {
 				message.channel.send('<a:Wizard:737758521776537712> <a:Wizard:737758521776537712>');

@@ -1,4 +1,4 @@
-module.exports = message => {
+/*module.exports = message => {
   if (message.channel.type == "dm") return;
   const member = message.mentions.members.first()
   if (message.member.hasPermission('KICK_MEMBERS')) {
@@ -13,8 +13,8 @@ module.exports = message => {
     .then(() => message.reply(`${member.user.tag} was kicked.`))
     .catch(error => message.reply(`Sorry, an error occured.`))
 }
-}
-/*module.exports = {
+}*/
+module.exports = {
 	name: 'kick',
 	description: 'Kick Members',
 	execute(message, args) {
@@ -34,4 +34,3 @@ module.exports = message => {
   }
 	},
 };
-*/
