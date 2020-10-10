@@ -21,7 +21,7 @@ fs.readdir("./events/", (err, files) => {
 
 client.on("message", message => {
 
-			if (!message.content.startsWith(prefix) || message.author.bot || message.channel.type == "dm") return;
+			if (message.author.bot || message.channel.type == "dm") return;
 
 			const args = message.content.slice(prefix.length).trim().split(/ +/);
 			const command = args.shift().toLowerCase();
@@ -54,7 +54,7 @@ client.on("message", message => {
 					console.log(`${message.author.username} used !purge`);
 				}
 			}
-			if (message.content === prefix + "16") {
+			if (message.content === "16") {
 				message.channel.send("16 is the best number!!! and you can't do anything to change that.");
 				console.log(`${message.author.username} used !16`);
 			}
