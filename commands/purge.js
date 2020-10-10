@@ -3,7 +3,6 @@ module.exports = {
 	name: 'purge',
 	description: 'Purge messages',
 	execute(message, args) {
-			if (!message.content.startsWith('!')) return;
     if (message.member.hasPermission('MANAGE_MESSAGES')) {
         const amount = parseInt(args[0]) + 1;
 
