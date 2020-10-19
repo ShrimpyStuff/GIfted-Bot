@@ -24,7 +24,7 @@ client.on('message', message => {
 	if (message.content === "16") {
 		message.channel.send("16 is the best number!!! and you can't do anything to change that.");
 	}
-	if (message.mentions.has(client.user)) {
+	if (message.mentions.has(client.user) && message.content.length === 21) {
 		return message.channel.send(`Hi ${message.author.username}!` +  ' My prefix is `!`' );
 	}
 	if (message.channel.id === `757268102193873027` && message.author.id != '545292962821570560') {
