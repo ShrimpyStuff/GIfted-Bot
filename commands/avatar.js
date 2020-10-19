@@ -4,12 +4,24 @@ module.exports = {
   aliases: ['pfp', 'icon'],
 	usage: '[member]',
 	execute(message, args) {
+		const Discord = require('discord.js');
+
 		if (!message.mentions.users.size) {
-			return message.channel.send(`Your avatar: ${message.author.displayAvatarURL({ dynamic: true })}`);
+			const yourAvatar = new Discord.MessageEmbed()
+	.setColor('#00aae8')
+	.setTitle('Your avatar')
+	.setImage(`${message.author.displayAvatarURL({ dynamic: true })}`)
+
+message.channel.send(yourAvatar);
 		}
 
 		const avatarList = message.mentions.users.map(user => {
-			return `${user.username}'s avatar: ${user.displayAvatarURL({ dynamic: true })}`;
+				const mentionAvatar = new Discord.MessageEmbed()
+		.setColor('#00aae8')
+		.setTitle(`${user.username}'s avatar`)
+		.setImage(`${user.displayAvatarURL({ dynamic: true })}`)
+
+	message.channel.send(mentionAvatar);
 		});
 
 		message.channel.send(avatarList);
