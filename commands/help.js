@@ -1,43 +1,57 @@
+const { prefix } = require('../config.json');
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
 module.exports = {
 	name: 'help',
 	description: 'List all of my commands or info about a specific command.',
-  aliases: ['commands'],
-	usage: '[command name]',
+	aliases: ['commands'],
+	usage: 'help [command name]',
 	execute(message, args) {
-    const { prefix } = require('../config.json');
-    const data = [];
-const { commands } = message.client;
-if (!args.length) {
-  data.push('Here\'s a list of all my commands:');
-data.push(commands.map(command => command.name).join(', '));
-data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
+		const { commands } = message.client;
+		if (!args.length) {
+			message.channel.send(
+				new Discord.MessageEmbed()
+					.setTitle("Gifted Bot's command list")
+					.setColor('#00aae8')
+					.setThumbnail(message.client.user.displayAvatarURL({ format: 'png' }))
+					.setFooter(
+						`You can send ${prefix}help [command] to get info on a specific command!`
+					)
+					.setDescription(
+						commands.map(
+							cmd =>
+								`\`${cmd.name}\` - ${cmd.description || '(No description)'}`
+						)
+					)
+			);
+			return;
+		}
 
-return message.author.send(data, { split: true })
-	.then(() => {
-		if (message.channel.type === 'dm') return;
-		message.reply('I\'ve sent you a DM with all my commands!');
-	})
-	.catch(error => {
-		console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-		message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
-	});
-}
+		const search = args[0].toLowerCase();
+		const command = commands.find(
+			c => c.name === search || (c.aliases || []).includes(search)
+		);
 
-const name = args[0].toLowerCase();
-const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+		if (!command) {
+			message.channel.send("That's not a valid command!");
+			return;
+		}
 
-if (!command) {
-	return message.reply('that\'s not a valid command!');
-}
+		const { name, description, aliases, usage } = command;
+		const embed = new Discord.MessageEmbed()
+			.setTitle(`Command: \`${name}\``)
+			.setDescription(description)
+			.addField('Usage:', `\`\`\`${prefix}${usage || name}\`\`\``, false)
+			.setColor('#00aae8');
 
-data.push(`**Name:** ${command.name}`);
+		if (aliases)
+			embed.addField(
+				'Aliases:',
+				aliases.map(alias => `\`${alias}\``).join(', '),
+				false
+			);
 
-if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-if (command.description) data.push(`**Description:** ${command.description}`);
-if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
-
-if (command.cooldown) data.push(`**Cooldown:** ${command.cooldown} second(s)`);
-
-message.channel.send(data, { split: true });
+		message.channel.send(embed);
 	},
 };

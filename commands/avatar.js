@@ -2,7 +2,7 @@ module.exports = {
 	name: 'avatar',
 	description: 'Shows users avatar',
   aliases: ['pfp', 'icon'],
-	usage: '[member]',
+	usage: 'avatar [member]',
 	execute(message, args) {
 		const Discord = require('discord.js');
 
