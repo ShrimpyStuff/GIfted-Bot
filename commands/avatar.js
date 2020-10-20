@@ -10,7 +10,7 @@ module.exports = {
 			const yourAvatar = new Discord.MessageEmbed()
 	.setColor('#00aae8')
 	.setTitle('Your avatar')
-	.setImage(`${message.author.displayAvatarURL({ dynamic: true })}`)
+	.setImage(`${message.author.displayAvatarURL({ dynamic: true, size: 256 })}`)
 
 message.channel.send(yourAvatar);
 		}
@@ -19,7 +19,7 @@ message.channel.send(yourAvatar);
 				const mentionAvatar = new Discord.MessageEmbed()
 		.setColor('#00aae8')
 		.setTitle(`${user.username}'s avatar`)
-		.setImage(`${user.displayAvatarURL({ dynamic: true })}`)
+		.setImage(`${user.displayAvatarURL({ dynamic: true, size: 256 })}`)
 
 	message.channel.send(mentionAvatar);
 		});
