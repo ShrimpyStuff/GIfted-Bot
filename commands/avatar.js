@@ -23,7 +23,5 @@ message.channel.send(yourAvatar);
 
 	message.channel.send(mentionAvatar);
 		});
-
-		message.channel.send(avatarList);
 	},
 };
