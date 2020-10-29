@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const { prefix, token, ownerID, config } = require('./config.json');
 client.commands = new Discord.Collection();
+require("dotenv").config()
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -65,4 +66,4 @@ function resetBot(channel) {
 		.then(msg => channel.send('Done'));
 }
 
-client.login(token);
+client.login(process.env.BOT_TOKEN);
