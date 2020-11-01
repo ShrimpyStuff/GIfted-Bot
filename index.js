@@ -25,7 +25,7 @@ client.on('message', message => {
 	if (message.content === "16") {
 		message.channel.send("16 is the best number!!! and you can't do anything to change that.");
 	}
-	if (message.mentions.has(client.user)) {
+	if (message.content === `<@!${client.user.id}>`) {
 		message.channel.send(`Hi ${message.author.username}!` +  ' My prefix is `!`' );
 	}
 	if (message.channel.id === `757268102193873027` && message.author.id != '545292962821570560') {
@@ -41,7 +41,7 @@ client.on('message', message => {
 		}
 	}
 
-			if (!message.content.startsWith(prefix) || message.author.bot || message.channel.type == "dm") return;
+			if ((!message.content.toLowerCase().startsWith(prefix)) && (!message.content.startsWith(<@!${client.user.id}>)) || message.author.bot || message.channel.type == "dm") return;
 
   const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
