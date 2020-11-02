@@ -1,3 +1,3 @@
-module.exports = (client, member) => {
-  member.send(`Welcome to the server, ${member}!`)
+module.exports = (client, channel, member, guild) => {
+  member.send(`Welcome to ${guild.name}, ${member}!`)
 }
