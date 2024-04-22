@@ -41,7 +41,7 @@ client.on('message', message => {
 		}
 	}
 
-			if ((!message.content.toLowerCase().startsWith(prefix)) && (!message.content.startsWith(<@!${client.user.id}>)) || message.author.bot || message.channel.type == "dm") return;
+			if ((!message.content.toLowerCase().startsWith(prefix)) && (!message.content.startsWith(`<@!${client.user.id}>`)) || message.author.bot || message.channel.type == "dm") return;
 
   const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
